@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="css/index.css">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			padding-top: 100px; 
+		}
+		span{
+			display: inline-block;
+		}
+		input{
+			outline: none;
+			border: none;
+		}
+		.container{
+			width: 700px;
+			margin: auto;
+		}
+		.container .header{
+			height: 40px;
+			line-height: 40px;
+			padding: 0 10px;
+			background-color: #403e3e;
+		}
+		.container .header h3{
+			color: #ccc;
+			font-weight: normal;
+			float: left;
+		}
+		#text{
+			width: 300px;
+			height: 24px;
+			margin:7px 20px 0 0;
+			padding: 0 5px;
+			border-radius: 5px;
+			float: right;
+		}
+		.container .main{
+			background-color: #ccc;
+			padding: 0 10px 20px;
+		}
+		.doing h3,.done h3{
+			height: 60px;
+			line-height: 60px;
+		}
+		.doing span,.done span{
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			border-radius: 50%;
+			background-color: #e2dfdf;
+			float: right;
+			margin-top: 19px;
+			margin-right: 25px;
+			font-size: 14px;
+			font-weight: normal;
+		}
+		.doing p,.done p{
+			clear: both;
+			width: 660px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 14px;
+			margin-bottom: 20px;
+			background-color: #fff;
+		}
+		.done p{
+			background-color: #e2dfdf;
+		}
+		.doing input,.done input{
+			margin: 10px 10px 0;
+			background-color: #fff;
+			border:1px solid #ccc;
+			border-top: 2px solid #ccc;
+			border-radius: 3px;
+		}
+		.doing i,.done i{
+			font-style: normal;
+			width: 16px;
+			height: 16px;
+			line-height: 16px;
+			text-align: center;
+			border-radius: 50%;
+			float: right;
+			background-color: #e2dfdf;
+			margin: 8px 10px 0 0;
+			cursor: pointer;
+		}
+		.done i{
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h3>ToDoList</h3>
+			<input id="text" type="text" placeholder="添加ToDo">
+		</div>
+		<div class="main">
+			<div class="doing">
+				<h3>正在进行<!-- <span id="doing_count"></span> --></h3>
+				<!-- <p><input type="checkbox">  好开心考试哦 <i>X</i></p> -->
+			</div>
+			<div class="done">
+				<h3>已经完成<!-- <span id="done_count"></span> --></h3>
+				<!-- <p><input type="checkbox">  好开心考试哦 <i>X</i></p> -->
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//获取输入框内容
+			var $doing = $('.doing');
+			var $done = $('.done');
+			var $text = $('#text');
+			var $doing_count = $('<span></span>');
+			var $done_count = $('<span></span>');
+			$text.keyup(function(evt){
+				
+				if(evt.which==13){
+					if($text.val()==''){
+						return;
+					}else{
+						$('<p><input type="checkbox">'+$text.val()+'<i>X</i></p>').appendTo($doing);
+						$doing_count.text($doing.children().length-1).appendTo($('.doing h3'));
+						$text.val('');
+					}
+				}
+			})
+
+			//绑定复选框事件
+			$doing.on('click','input',function(){
+				$(this).parent().appendTo($done);
+				$doing_count.text($doing.children().length-1).appendTo($('.doing h3'));
+				$done_count.text($done.children().length-1).appendTo($('.done h3'));
+			})
+			
+			//删除选定p标签
+			$doing.on('click','i',function(){
+				$(this).parent().remove();
+				$doing_count.text($doing.children().length-1).appendTo($('.doing h3'));
+				if( $doing_count.text() == 0){
+					$('.doing h3 span').remove();
+				}
+				if( $done_count.text() == 0){
+					$('.done h3 span').remove();
+				}
+			})
+			$done.on('click','i',function(){
+				$(this).parent().remove();
+				$done_count.text($done.children().length-1).appendTo($('.done h3'));
+				if( $doing_count.text() == 0){
+					$('.doing h3 span').remove();
+				}
+				if( $done_count.text() == 0){
+					$('.done h3 span').remove();
+				}
+			})
+		})
+	</script>
+</body>
+</html>

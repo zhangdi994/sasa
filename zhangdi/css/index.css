@@ -1,0 +1,94 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	padding-top: 100px; 
+}
+span{
+	display: inline-block;
+}
+input{
+	outline: none;
+	border: none;
+}
+.container{
+	width: 700px;
+	margin: auto;
+}
+.container .header{
+	height: 40px;
+	line-height: 40px;
+	padding: 0 10px;
+	background-color: #403e3e;
+}
+.container .header h3{
+	color: #ccc;
+	font-weight: normal;
+	float: left;
+}
+#text{
+	width: 300px;
+	height: 24px;
+	margin:7px 20px 0 0;
+	padding: 0 5px;
+	border-radius: 5px;
+	float: right;
+}
+.container .main{
+	background-color: #ccc;
+	padding: 0 10px 20px;
+}
+.doing h3,.done h3{
+	height: 60px;
+	line-height: 60px;
+}
+.doing span,.done span{
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	border-radius: 50%;
+	background-color: #e2dfdf;
+	float: right;
+	margin-top: 19px;
+	margin-right: 25px;
+	font-size: 14px;
+	font-weight: normal;
+}
+.doing p,.done p{
+	clear: both;
+	width: 660px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	margin-bottom: 20px;
+	background-color: #fff;
+}
+.done p{
+	background-color: #e2dfdf;
+}
+.doing input,.done input{
+	margin: 10px 10px 0;
+	background-color: #fff;
+	border:1px solid #ccc;
+	border-top: 2px solid #ccc;
+	border-radius: 3px;
+}
+.doing i,.done i{
+	font-style: normal;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	text-align: center;
+	border-radius: 50%;
+	float: right;
+	background-color: #e2dfdf;
+	margin: 8px 10px 0 0;
+	cursor: pointer;
+}
+.done i{
+	background-color: #fff;
+}
