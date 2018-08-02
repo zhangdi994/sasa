@@ -1,0 +1,52 @@
+nidejs
+  1.安装node
+  2.验证版本 node -v /--version
+           npm -v/--version/-version
+  3.后缀名.js
+  4.当前路径  pwd  
+    路径下的内容 ls
+    node  test.js  运行js的文件
+  5.js的组成：DOM  bom   ecmascript:node
+  6.node的命名：不能用node.js/nodejs.js
+  7.node用来写服务器
+    新建severs.js
+    引入一个模块，http。var http = require("http");
+    创建一个severs，var sever = http.createServer(function(request,response){
+                      //request 是客服端到服务器端
+                      //response 是服务器端到客户端
+		      console.log("有人来了");
+                      console.log(request.url);
+                      response.write("hello");
+                      response.end();
+		      简写：res.end("hello end");
+                          })
+  
+   创建监听：server.listen(90000);https:443;http:80端口。
+             server.listen(9000,function(){
+                console.log("你的服务器已经开启了");
+              })
+   一个应用程序，只能有一个端口。
+   服务器在修改之后，必须要重启。ctrl+c
+  8.node是写后台的，下npm包
+  9.file.js  fs模块 filesyatem文件系统
+    var fs = requires("fs");
+    console.log(fs);
+    fs.readFile("a.txt",function(err,data){
+       
+     });
+  
+    readFile
+    readFilesync:同步读取。
+    ajax：asynhronpus异步
+
+  10.处理异常和错误
+     try{
+       有可能出错的代码    
+	}catch(e){
+    	补救的代码
+      }
+  11.用户的登录注册。
+     接口 http://localhost:9000/login?user=aaa&pass=123
+     {error:1/0,mag:"登录成功/失败"}
+  12.var url = require("url");解析url
+     parse解析 url.parse(str,true)
